@@ -1,0 +1,27 @@
+{
+  "validation-extended": {
+    "ok": true,
+    "errors": [],
+    "warnings": []
+  },
+  "pet-quality": {
+    "ok": true,
+    "errors": [],
+    "warnings": [
+      "look direction 067.5 accepted with a reviewed warning",
+      "look direction 247.5 accepted with a reviewed warning",
+      "look direction 337.5 accepted with a reviewed warning",
+      "157.5->180 diff is a local outlier (3408 pixels vs neighbor average 1535)",
+      "247.5->270 diff is a local outlier (1880 pixels vs neighbor average 1274)"
+    ]
+  },
+  "blind-validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [
+      "horizontal-1 A horizontal axis is ambiguous"
+    ]
+  },
+  "direction_review": "Cardinal gates passed. Near-vertical 337.5 horizontal gaze is subtle; accepted after full sequence review.",
+  "v2_sha256": "d1110cab8de8f34a81e7132dd54abcb0b88e895e9891ff64e6b3fb0521e1dfac"
+}
