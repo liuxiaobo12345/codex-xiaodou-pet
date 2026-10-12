@@ -3,6 +3,7 @@
 *.gif binary
 *.mp4 binary
 *.zip binary
+*.exe binary
 *.md text eol=lf
 *.json text eol=lf
 *.txt text eol=lf

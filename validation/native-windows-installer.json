@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "embedded_image_sha256": "d1110cab8de8f34a81e7132dd54abcb0b88e895e9891ff64e6b3fb0521e1dfac",
+  "first_install": "passed",
+  "repeat_install": "no duplicate",
+  "existing_directory": "preserved",
+  "existing_file": "preserved",
+  "unicode_and_space_path": "passed",
+  "custom_home": "passed",
+  "lock_cleanup": "passed",
+  "installer_version": "v1.0.2",
+  "installer_sha256": "031c2c4d025ef495a77c47251f66f9e5824105a4d07d292deb69a647962e44d0",
+  "digital_signature": "unsigned",
+  "ui_preview": "visually reviewed",
+  "test_scope": "Installer core tested in isolated workspace directories; no installation into the current user pet directory."
+}
