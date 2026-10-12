@@ -4,25 +4,46 @@
 
 ![小豆动作预览](previews/animations.gif)
 
-## 快速试用
+## 快速试用：本地安装
 
-需要支持自定义宠物的桌面应用，并先开启「Mini 与虚拟宠物 / Pets」功能。
+需要支持本地自定义宠物的桌面应用。推荐安装包方式；部分账号的宠物安装链接只会打开应用，不显示安装弹窗。
 
-**Windows**：打开 PowerShell，粘贴下面这条命令并回车。它只打开应用的宠物安装界面；确认安装后，在宠物列表中选择「小豆」。
+### Windows
+
+1. [下载小豆桌面安装包（约 2.7 MB）](https://raw.githubusercontent.com/liuxiaobo12345/codex-xiaodou-pet/v1.0.1/downloads/xiaodou-desktop-v1.0.1.zip)，解压后得到 `xiaodou` 文件夹，里面有 `pet.json` 和 `spritesheet.png`。
+2. 打开文件资源管理器，在地址栏输入 `%USERPROFILE%\.codex\pets`。如果 `pets` 文件夹不存在，先创建它。
+3. 把整个 `xiaodou` 文件夹复制进去，最终文件位置为：
+
+   ```text
+   %USERPROFILE%\.codex\pets\xiaodou\pet.json
+   %USERPROFILE%\.codex\pets\xiaodou\spritesheet.png
+   ```
+
+4. 打开应用的 **设置 → Mini 与虚拟宠物 / Pets**，点击刷新并选择「小豆」。如果没有显示，重启桌面应用后再查看。
+
+如果已有 `xiaodou` 文件夹，请先给新文件夹换个名字，例如 `xiaodou-2`，保留已有素材。若你设置了 `CODEX_HOME`，请使用该目录下的 `pets` 文件夹。
+
+### macOS
+
+下载并解压同一个安装包，将 `xiaodou` 文件夹放到 `~/.codex/pets/`，然后刷新宠物列表。设置了 `CODEX_HOME` 的用户应放到该目录下的 `pets/`。
+
+### 可选：Windows 脚本安装
+
+下载完整仓库并解压，在仓库目录运行：
 
 ```powershell
-Start-Process 'codex://pets/install?name=%E5%B0%8F%E8%B1%86&imageUrl=https%3A%2F%2Fraw.githubusercontent.com%2Fliuxiaobo12345%2Fcodex-xiaodou-pet%2Fv1.0.0%2Fassets%2Fspritesheet.png&description=%E7%9F%AD%E5%8F%91%E3%80%81%E5%A4%A7%E7%9C%BC%E7%9D%9B%E3%80%81%E9%BB%91%E8%89%B2%E5%BC%80%E8%A1%AB%E4%B8%8E%E7%81%B0%E8%89%B2%E7%9F%AD%E8%A3%99%E7%9A%84%203D%20%E7%8E%A9%E5%81%B6%E4%BC%99%E4%BC%B4%E3%80%82&spriteVersionNumber=2'
+.\scripts\install-windows.ps1
 ```
 
-**macOS**：在终端运行：
+脚本会检查图片尺寸与校验值，重复安装会识别已有相同素材；遇到同名的其他内容会使用新文件夹，不覆盖它。使用 `-WhatIf` 可预览操作，使用 `-CodexHome 'D:\YourCodexHome'` 可指定目录。
 
-```bash
-open 'codex://pets/install?name=%E5%B0%8F%E8%B1%86&imageUrl=https%3A%2F%2Fraw.githubusercontent.com%2Fliuxiaobo12345%2Fcodex-xiaodou-pet%2Fv1.0.0%2Fassets%2Fspritesheet.png&description=%E7%9F%AD%E5%8F%91%E3%80%81%E5%A4%A7%E7%9C%BC%E7%9D%9B%E3%80%81%E9%BB%91%E8%89%B2%E5%BC%80%E8%A1%AB%E4%B8%8E%E7%81%B0%E8%89%B2%E7%9F%AD%E8%A3%99%E7%9A%84%203D%20%E7%8E%A9%E5%81%B6%E4%BC%99%E4%BC%B4%E3%80%82&spriteVersionNumber=2'
-```
+如果执行策略阻止脚本，请使用上面的手动复制方式，无需更改系统执行策略。
 
-也可以复制 [install-link.txt](install-link.txt) 中的完整链接到浏览器地址栏，允许浏览器打开桌面应用。安装入口可用性取决于应用版本与工作区设置。
+### 可选：安装链接
 
-安装链接采用官方的 `codex://pets/install` 格式，并指定 `spriteVersionNumber=2`。图片固定引用 `v1.0.0`，不会随主分支修改。
+[install-link.txt](install-link.txt) 保留官方格式的链接，仅适用于已启用宠物安装弹窗的账号与应用版本。**只打开应用、没有弹窗时，使用上面的本地安装包即可。**
+
+本地安装包使用桌面应用读取的 `displayName`、`description`、`spriteVersionNumber` 和 `spritesheetPath` 字段，文件为 UTF-8 无 BOM。该格式已与 Windows 桌面版 26.1007.21434 的读取逻辑核对。网页宠物上传是另一个入口，见下文。
 
 ## 下载素材
 
@@ -45,7 +66,7 @@ open 'codex://pets/install?name=%E5%B0%8F%E8%B1%86&imageUrl=https%3A%2F%2Fraw.gi
 | 思考 / 工作 | 6 |
 | 查看 / 完成 | 6 |
 
-`assets/` 是可导入素材，`previews/` 是预览，`source/` 保存原始形象、动作源图和生成提示词，`pet.json` 记录布局与校验值，`validation/` 保存检查摘要。
+`desktop/xiaodou/` 是桌面宠物文件，`downloads/` 是轻量安装包，`scripts/` 是可选安装脚本，`assets/` 是可导入素材，`previews/` 是预览，`source/` 保存原始形象、动作源图和生成提示词，`pet.json` 记录布局与校验值，`validation/` 保存检查摘要。
 
 ## 制作与反馈
 

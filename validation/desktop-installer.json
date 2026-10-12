@@ -1,0 +1,12 @@
+{
+  "native_manifest_format_checked_against": "Windows desktop app 26.1007.21434",
+  "package": "downloads/xiaodou-desktop-v1.0.1.zip",
+  "package_members": ["xiaodou/pet.json", "xiaodou/spritesheet.png"],
+  "image_sha256": "d1110cab8de8f34a81e7132dd54abcb0b88e895e9891ff64e6b3fb0521e1dfac",
+  "first_install": "passed",
+  "repeat_install": "passed; no duplicate created",
+  "existing_folder_collision": "passed; existing files preserved",
+  "what_if": "passed; no files created",
+  "utf8_manifest": "passed; UTF-8 without BOM",
+  "ui_note": "Refresh the desktop pet picker after installation. Package and filesystem checks do not verify the UI feature availability of every application version."
+}
